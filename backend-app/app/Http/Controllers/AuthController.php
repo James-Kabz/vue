@@ -19,16 +19,20 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            $token = $user->createToken('authToken')->plainTextToken;
+            $user = $request->user();
+            $token = $user->createToken('auth-token');
 
-            return response()->json(['token' => $token], 200);
+            return response()->json([
+                'access_token' => $token->plainTextToken,
+                'user' => [
+                    'role' => $user->role // Assuming 'role' is a column in your users table
+                ]
+            ]);
+        } else {
+            return response()->json(['error' => 'Login failed'], 401);
         }
-
-        throw ValidationException::withMessages([
-            'email' => __('auth.failed'),
-        ]);
     }
+
 
     // signup
 

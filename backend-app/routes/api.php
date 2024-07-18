@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::post('/signup', [AuthController ::class ,'signup']);
+Route::middleware('auth:sanctum')->group( function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
+
 Route::post('/addProduct', [ProductController::class, 'addProduct']);
 Route::get('/getProduct/{id}', [ProductController::class, 'getProduct']);
 Route::get('/getProducts', [ProductController::class, 'getProducts']);
