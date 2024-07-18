@@ -27,7 +27,8 @@ const vuetify = createVuetify({
     sets: {
       mdi
     }
-  }
+  },
+
 })
 
 app.use(vuetify)

@@ -1,14 +1,28 @@
+<script setup>
+import { useUserStore } from '@/stores/user'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+const userStore = useUserStore()
+const isLoggedIn = computed(() => userStore.isLoggedIn)
+const handleLogout = () => {
+  userStore.logout()
+  router.push('/login')
+}
+</script>
+
 <template>
   <v-footer color="green" app>
     <v-container>
       <v-row class="text-center">
         <v-col>
-          <v-btn text class="footer-link" to="/home">Home</v-btn>
-          <v-btn text class="footer-link" to="/about">About</v-btn>
-          <v-btn text class="footer-link" to="/contact">Contact</v-btn>
-          <v-btn text class="footer-link" to="/product">Products</v-btn>
-          <v-btn text class="footer-link" to="/login">Login</v-btn>
-          <v-btn text class="footer-link" to="/signup">Sign Up</v-btn>
+          <v-btn v-show="!isLoggedIn" text class="footer-link" to="/">Home</v-btn>
+          <v-btn v-show="!isLoggedIn" text class="footer-link" to="/about">About</v-btn>
+          <v-btn v-show="!isLoggedIn" text class="footer-link" to="/services">Services</v-btn>
+          <v-btn v-show="!isLoggedIn" text class="footer-link" to="/login">Login</v-btn>
+          <v-btn v-show="!isLoggedIn" text class="footer-link" to="/signup">Sign Up</v-btn>
+          <v-btn v-show="isLoggedIn" class="footer-link" @click="handleLogout">Logout</v-btn>
         </v-col>
       </v-row>
       <v-row class="text-center">
@@ -22,32 +36,29 @@
   </v-footer>
 </template>
 
-<script>
-export default {
-  name: 'FooterComponent'
-}
-</script>
-
 <style scoped>
 .v-footer {
-  padding: 0px;
-  text-align: center;
+  padding: 10px 0; /* Reduced height */
+  background-color: #f0f0f0; /* Lighter background color */
+  color: #333; /* Darker text color */
 }
 
 .footer-link {
-  color: black !important;
+  color: #333; /* Darker text color */
   font-weight: bold;
   text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.3s ease;
+  margin: 0 8px;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-link:hover {
-  color: #19d22c !important;
+  color: #1abc9c; /* Change color on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 .footer-year {
-  font-size: 14px;
-  color: white;
+  font-size: 14px; /* Smaller font size */
+  color: #333; /* Darker text color */
+  margin-top: 5px;
 }
 </style>
