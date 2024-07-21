@@ -55,22 +55,23 @@ html {
 
 @keyframes fadeIn {
   to {
-    opacity: 1;
+    opacity: 3;
   }
 }
 
 .company-name {
+  color: greenyellow;
   font-size: 3rem;
   margin: 0;
   opacity: 0;
-  animation: slideIn 2s forwards 1s;
+  animation: slideIn 1s forwards 1s;
 }
 
 .tagline {
   font-size: 2.5rem;
   margin: 0;
   opacity: 0;
-  animation: slideIn 2s forwards 1.5s;
+  animation: slideIn 1.5s forwards 1s;
 }
 
 @keyframes slideIn {

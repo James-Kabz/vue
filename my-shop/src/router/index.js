@@ -2,7 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
-import ServicesView from '../views/ServicesView.vue'
+import ContactView from '../views/ContactView.vue'
 import LoginView from '../components/LoginView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import AdminDashboard from '../views/AdminDashboard.vue'
@@ -39,9 +39,9 @@ const router = createRouter({
       component: AboutView
     },
     {
-      path: '/services',
-      name: 'services',
-      component: ServicesView
+      path: '/contact',
+      name: 'contact',
+      component: ContactView
     },
     {
       path: '/signup',

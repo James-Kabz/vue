@@ -19,7 +19,7 @@ const handleLogout = () => {
         <v-col>
           <v-btn v-show="!isLoggedIn" text class="footer-link" to="/">Home</v-btn>
           <v-btn v-show="!isLoggedIn" text class="footer-link" to="/about">About</v-btn>
-          <v-btn v-show="!isLoggedIn" text class="footer-link" to="/services">Services</v-btn>
+          <v-btn v-show="!isLoggedIn" text class="footer-link" to="/contact">Contact</v-btn>
           <v-btn v-show="!isLoggedIn" text class="footer-link" to="/login">Login</v-btn>
           <v-btn v-show="!isLoggedIn" text class="footer-link" to="/signup">Sign Up</v-btn>
           <v-btn v-show="isLoggedIn" class="footer-link" @click="handleLogout">Logout</v-btn>

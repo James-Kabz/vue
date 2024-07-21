@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useUserStore = defineStore('user', {
   state: () => ({
     isLoggedIn: false,
-    role: '' // Add role to the state
+    role: ''
   }),
 
   getters: {
